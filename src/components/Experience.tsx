@@ -23,22 +23,32 @@ export const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 md:py-32 px-6 relative">
-      <div className="max-w-5xl mx-auto">
+    <section id="experience" className="py-24 md:py-40 px-6 relative">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="inline-block mb-4"
+          >
+            <span className="px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+              Professional Journey
+            </span>
+          </motion.div>
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
               Work Experience
             </span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Building innovative solutions and leading teams
+          <p className="text-muted-foreground text-xl max-w-2xl mx-auto leading-relaxed">
+            Building innovative solutions and leading high-impact teams
           </p>
         </motion.div>
 
@@ -48,9 +58,9 @@ export const Experience = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.role}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40, y: 20 }}
+              animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.25, ease: [0.22, 1, 0.36, 1] }}
               className={`relative mb-12 ${
                 index % 2 === 0 ? 'md:pr-[50%]' : 'md:pl-[50%]'
               }`}
@@ -60,15 +70,15 @@ export const Experience = () => {
               </div>
 
               <div className="ml-16 md:ml-0 md:px-8">
-                <div className="bg-card/30 backdrop-blur-md border border-border rounded-2xl p-6 hover:border-primary/50 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)] transition-all duration-300">
-                  <div className="flex items-center gap-2 text-sm text-primary mb-2">
+                <div className="bg-card/40 backdrop-blur-xl border border-border/50 rounded-3xl p-8 hover:border-primary/50 hover:shadow-[0_0_40px_hsl(var(--primary)/0.15)] transition-all duration-500">
+                  <div className="flex items-center gap-2 text-sm text-primary mb-3">
                     <span className="font-semibold">{exp.period}</span>
                   </div>
-                  <h3 className="text-xl font-semibold mb-1">{exp.role}</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <h3 className="text-2xl font-bold mb-2">{exp.role}</h3>
+                  <p className="text-muted-foreground mb-6">
                     {exp.company} • {exp.location}
                   </p>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed text-base">
                     {exp.description}
                   </p>
                 </div>
